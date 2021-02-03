@@ -11,9 +11,9 @@
         <div style = "text-align: center;    font-size: 55px;">Web Form to iOS Native</div>
         <div class="container">
                 <div class="inputContainer">
-                  <input class="style" type="email" placeholder="Company ID" id="email"></input>
-                  <input class="style" type="email" placeholder="User ID" id="firstName"></input>
-                  <input class="style" type="email" placeholder="Auth Token" id="lastName"></input>
+                  <input class="style" type="companyID" placeholder="Company ID" id="companyID"></input>
+                  <input class="style" type="userID" placeholder="User ID" id="userID"></input>
+                  <input class="style" type="accessToken" placeholder="Access Token" id="accessToken"></input>
                   <div class="sumbitButtons">             
                       <button type="submit" class="style" onclick="sendDetails()"><i>Send Data from Web to iOS</i></button>
                   </div>
@@ -21,19 +21,19 @@
               </div>
 
     <script>
-        function fillDetails(jsonData) {
+        function fillTheiOSDatas(jsonData) {
             console.log('jsonData =' , jsonData);
             var userData = JSON.parse(jsonData);
-            document.getElementById("email").value = userData["email"];
-            document.getElementById("firstName").value =userData["firstName"];
-            document.getElementById("lastName").value = userData["lastName"];
+            document.getElementById("companyID").value = userData["companyID"];
+            document.getElementById("userID").value =userData["userID"];
+            document.getElementById("accessToken").value = userData["accessToken"];
         }
 
         function sendDetails() {
-                   var email = document.getElementById("email").value;
-                   var firstName = document.getElementById("firstName").value;
-                   var lastName = document.getElementById("lastName").value;
-                   var value = {"email":email , "firstName":firstName , "lastName" : lastName}
+                   var companyID = document.getElementById("companyID").value;
+                   var userID = document.getElementById("userID").value;
+                   var accessToken = document.getElementById("accessToken").value;
+                   var value = {"companyID":companyID , "userID":userID , "accessToken" : accessToken}
 
                    try {
                        webkit.messageHandlers.sumbitToiOS.postMessage(value);
